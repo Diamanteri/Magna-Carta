@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Magna Carta Chronicles</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=EB+Garamond:wght@400;600&display=swap">
+    <style>
+        /* Base styles - Mobile First Approach */
+        :root {
+            --parchment: #f4e9d8;
+            --parchment-dark: #e6d6b8;
+            --ink: #3a2615;
+            --gold: #c9a96e;
+            --burgundy: #722f37;
+            --border-dark: #8b6b4d;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'EB Garamond', serif;
+            background-color: #2c1810;
+            color: var(--ink);
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect fill="%23000" width="100" height="100"/></svg>');
+            overflow-x: hidden;
+        }
+
+        .paper-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.03"><path d="M0,0 Q100,50 200,0 L200,200 Q100,150 0,200 Z" fill="%238b6b4d"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Header styles */
+        .site-header {
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .titleblock h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--burgundy);
+            text-shadow: 2px 2px 4px var(--shadow);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            padding: 0 0.5rem;
+            position: relative;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--parchment-dark);
+            border: 2px solid var(--border-dark);
+            border-radius: 20px;
+            color: var(--ink);
+            text-decoration: none;
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .nav-link:hover, .nav-link:focus {
+            background-color: var(--burgundy);
+            color: var(--parchment);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--parchment-dark);
+            border: 2px solid var(--border-dark);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            z-index: 1000;
+            min-width: 200px;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--ink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover, .dropdown-menu a:focus {
+            background-color: var(--burgundy);
+            color: var(--parchment);
+        }
+
+        .nav-item:hover .dropdown-menu,
+        .nav-item:focus-within .dropdown-menu {
+            display: block;
+        }
+
+        /* Main content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem;
+        }
+
+        .parchment {
+            background-color: var(--parchment);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 20%),
+                radial-gradient(circle at 90% 80%, rgba(227,205,173,0.3) 0%, rgba(227,205,173,0) 25%),
+                linear-gradient(to bottom, rgba(244,233,216,0.8) 0%, rgba(244,233,216,0.4) 100%);
+            border: 15px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none" stroke="%238b6b4d" stroke-width="10"/></svg>') 30 round;
+            box-shadow: 0 0 20px var(--shadow), inset 0 0 50px rgba(139,107,77,0.1);
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        .illumination {
+            height: 40px;
+            background-color: var(--parchment-dark);
+            border: 1px solid var(--gold);
+            margin: 0 -1.5rem;
+        }
+
+        .illumination.top {
+            margin-bottom: 1.5rem;
+        }
+
+        .illumination.bottom {
+            margin-top: 1.5rem;
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .wax-seal {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, var(--parchment), var(--burgundy));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 5px double var(--gold);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .hero-cta {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .lead {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section titles */
+        .section-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            color: var(--burgundy);
+            text-align: center;
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0.8rem auto;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--burgundy);
+            font-weight: 600;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.8rem;
+            font-family: 'EB Garamond', serif;
+            font-size: 1rem;
+            border: 2px solid var(--border-dark);
+            background-color: var(--parchment);
+            color: var(--ink);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--burgundy);
+            color: var(--parchment);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover, .submit-btn:focus {
+            background-color: var(--ink);
+            outline: none;
+        }
+
+        /* Contact Info Grid */
+        .living {
+            margin: 2.5rem 0;
+        }
+
+        .living-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .living-card {
+            background-color: var(--parchment-dark);
+            padding: 1.2rem;
+            border: 2px solid var(--border-dark);
+            text-align: center;
+        }
+
+        .living-card h4 {
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Quill and Ink Section */
+        .quill-ink {
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .quill-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quill {
+            width: 100px;
+            height: 150px;
+            position: relative;
+        }
+
+        .quill-feather {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 120px;
+            background: linear-gradient(to bottom, #fff, #d4d4d4);
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+        }
+
+        .quill-nib {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 30px;
+            background: #333;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+        }
+
+        .inkwell {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #111, #000);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .ink {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: #111;
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-dark);
+            color: var(--ink);
+        }
+
+        /* Accessibility */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        button:focus, 
+        input:focus, 
+        .nav-link:focus,
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        /* Page navigation */
+        .page-nav {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .page-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--parchment-dark);
+            border: 2px solid var(--border-dark);
+            color: var(--ink);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .page-link:hover, .page-link:focus {
+            background-color: var(--burgundy);
+            color: var(--parchment);
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .site-header {
+                padding: 1.5rem;
+            }
+            
+            .parchment {
+                padding: 2rem;
+            }
+            
+            .illumination {
+                margin: 0 -2rem;
+            }
+            
+            .navbar {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                min-width: 150px;
+            }
+            
+            .living-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .submit-btn {
+                width: auto;
+            }
+        }
+
+        /* Laptop/Desktop Styles */
+        @media (min-width: 1024px) {
+            .site-header {
+                padding: 2rem;
+            }
+            
+            .parchment {
+                padding: 2.5rem;
+            }
+            
+            .illumination {
+                margin: 0 -2.5rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .wax-seal {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .living-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .parchment {
+                padding: 3rem;
+            }
+            
+            .illumination {
+                margin: 0 -3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper-overlay" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="titleblock">
+            <h1 class="quill">Magna Carta Chronicles</h1>
+            <p class="subtitle">The Ancient Manuscript of Liberty</p>
+        </div>
+
+        <nav class="navbar" aria-label="Primary">
+            <div class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="index.html#charter">The Great Charter</a>
+                <div class="dropdown-menu">
+                    <a href="index.html#timeline">Timeline</a>
+                    <a href="index.html#charter">Clauses</a>
+                    <a href="index.html#runnymede">Runnymede 1215</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="index.html#legacy">Legacy</a>
+                <div class="dropdown-menu">
+                    <a href="index.html#legacy">Democratic Legacy</a>
+                    <a href="index.html#living">Living Document</a>
+                    <a href="index.html#gallery">Character Gallery</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="contact.html">Contact Us</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" href="funfacts.html">Fun Facts</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <article class="parchment" aria-label="Parchment scroll">
+            <!-- Illuminated border -->
+            <div class="illumination top" aria-hidden="true"></div>
+
+            <!-- Hero wax seal + CTA -->
+            <section class="hero">
+                <div class="wax-seal" role="img" aria-label="Red wax seal with gilded rim"></div>
+                <h2 class="hero-cta quill">Send a Missive to the Chroniclers</h2>
+                <p class="lead">Your inquiries are like quill strokes on the parchment of history. Share your thoughts, questions, and insights about the Great Charter's enduring legacy.</p>
+            </section>
+
+            <!-- Contact Form -->
+            <section class="contact">
+                <h3 class="section-title quill">Compose Your Missive</h3>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Noble Name</label>
+                            <input type="text" id="name" class="form-input" required placeholder="Enter thy name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Messenger's Pigeon (Email)</label>
+                            <input type="email" id="email" class="form-input" required placeholder="Where may we send our reply?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Scroll Subject</label>
+                            <input type="text" id="subject" class="form-input" required placeholder="The matter at hand">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Quill's Ink</label>
+                            <textarea id="message" class="form-textarea" required placeholder="Write your message here, as if inking parchment with a quill..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Seal and Dispatch</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Quill and Ink Section -->
+            <section class="quill-ink">
+                <h3 class="section-title quill">Tools of the Chronicler</h3>
+                <p class="lead">In the tradition of medieval scribes, we preserve knowledge with quill and ink.</p>
+                
+                <div class="quill-container">
+                    <div class="quill">
+                        <div class="quill-feather"></div>
+                        <div class="quill-nib"></div>
+                    </div>
+                    <div class="inkwell">
+                        <div class="ink"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Contact Methods -->
+            <section class="living" style="margin-top: 3rem;">
+                <h3 class="section-title quill">Other Ways to Reach the Chroniclers</h3>
+                <div class="living-grid">
+                    <article class="living-card">
+                        <h4>By Royal Courier</h4>
+                        <p>Magna Carta Chronicles<br>
+                        The Liberty Hall Archives<br>
+                        Runnymede Meadows<br>
+                        Surrey, Kingdom of England<br>
+                        KT16 0PL</p>
+                    </article>
+                    <article class="living-card">
+                        <h4>Scholarly Inquiries</h4>
+                        <p>For academic research and scholarly discourse on the Great Charter, send your scrolls to our learned division:<br>
+                        <strong>research@magnacartachronicles.org</strong></p>
+                    </article>
+                    <article class="living-card">
+                        <h4>Scribe's Materials</h4>
+                        <p>Teachers and educators seeking parchment replicas or educational resources may contact our scribes at:<br>
+                        <strong>education@magnacartachronicles.org</strong></p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Navigation -->
+            <div class="page-nav">
+                <a href="index.html" class="page-link">Return to the Great Charter</a>
+                <a href="/funfact.html" class="page-link">Discover Curious Facts</a>
+            </div>
+
+            <div class="illumination bottom" aria-hidden="true"></div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>Medieval soundscape available — toggle motion and audio in your browser settings.</p>
+        <small>&copy; Magna Carta Chronicles - Anno Domini MMXXIV</small>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create a wax seal animation
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Sealing...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Dispatched!';
+                submitBtn.style.backgroundColor = 'var(--ink)';
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.innerHTML = `
+                    <div style="text-align: center; margin-top: 1rem; padding: 1rem; background-color: var(--parchment-dark); border: 2px solid var(--gold);">
+                        <h4 style="color: var(--burgundy); margin-bottom: 0.5rem;">Your Missive Has Been Sealed!</h4>
+                        <p>Thank you for your message. Our chroniclers shall respond with the wisdom of ages past.</p>
+                    </div>
+                `;
+                
+                document.querySelector('.contact-form').appendChild(successMsg);
+                
+                // Reset form
+                setTimeout(() => {
+                    document.getElementById('contactForm').reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = 'var(--burgundy)';
+                    successMsg.remove();
+                }, 5000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magna Carta Chronicles - The First Human Right</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="mobile-menu">
+                <a href="#hero">Home</a>
+                <a href="#pillars">Pillars</a>
+                <a href="#timeline">Timeline</a>
+                <a href="#seal">Add Seal</a>
+            </div>
+        </nav>
+
+        <div class="parchment">
+            <header>
+                <h1>Magna Carta Chronicles</h1>
+                <div class="subtitle">The First Human Right</div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+                <div class="hero-left">
+                    <div class="illumination">
+                        <div class="king-illustration">
+                            <div class="crown"></div>
+                            <div class="face"></div>
+                            <div class="robe"></div>
+                            <div class="quill"></div>
+                        </div>
+                        <div class="illustration-caption">King John sealing the Magna Carta at Runnymede</div>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="headline">Not a Blueprint for Democracy, but a Shield Against Tyranny</div>
+                    <div class="intro-text">
+                        <p class="quill-line">In a water-meadow in 1215, a foundational idea was sealed into history:</p>
+                        <p class="quill-line"><strong>That no one, not even the king, is above the law.</strong></p>
+                        <p class="quill-line">This single principle, etched onto sheepskin, became the first cornerstone of human rights.</p>
+                    </div>
+                    <div class="tree-container">
+                        <div class="tree"></div>
+                        <div class="tree-symbol scales" title="Scales of Justice">
+                            <div class="scale-icon"></div>
+                        </div>
+                        <div class="tree-symbol ballot" title="Voting Ballot">
+                            <div class="ballot-icon"></div>
+                        </div>
+                        <div class="tree-symbol megaphone" title="Free Speech">
+                            <div class="megaphone-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pillars Section -->
+            <section class="pillars-section" id="pillars">
+                <h2 class="section-title">The Pillars of Liberty</h2>
+                <div class="pillars-container">
+                    <!-- Pillar 1 -->
+                    <div class="pillar" onclick="togglePillar(this)">
+                        <div class="pillar-header">
+                            <h3 class="pillar-title">Habeas Corpus - The Right to Liberty</h3>
+                            <div class="interactive-element">
+                                <div class="lock" onclick="unlockPillar(event)"></div>
+                            </div>
+                        </div>
+                        <div class="pillar-content">
+                            <p class="clause">"No free man shall be seized or imprisoned... except by the lawful judgement of his equals or by the law of the land."</p>
+                            <p>This established the principle of <strong>due process</strong>. It outlawed arbitrary imprisonment and is the direct ancestor of the legal writ of Habeas Corpus, used worldwide to protect individuals from unlawful detention.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="pillar" onclick="togglePillar(this)">
+                        <div class="pillar-header">
+                            <h3 class="pillar-title">The Right to Justice</h3>
+                            <div class="interactive-element">
+                                <div class="scales-container">
+                                    <div class="scales-beam"></div>
+                                    <div class="scales-stand"></div>
+                                    <div class="scale-pan left-pan"></div>
+                                    <div class="scale-pan right-pan"></div>
+                                    <div class="coin coin-1" draggable="true"></div>
+                                    <div class="coin coin-2" draggable="true"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pillar-content">
+                            <p class="clause">"To no one will we sell, to no one deny or delay right or justice."</p>
+                            <p>This was a promise that the legal system should not be corrupt or accessible only to the wealthy. Justice must be fair, swift, and available to all.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="pillar" onclick="togglePillar(this)">
+                        <div class="pillar-header">
+                            <h3 class="pillar-title">The Rule of Law</h3>
+                            <div class="interactive-element">
+                                <div class="crown-text" ontouchstart="changeText(this)">The King is The Law</div>
+                            </div>
+                        </div>
+                        <div class="pillar-content">
+                            <p>For the first time, the monarch's power was formally constrained by a written document. It created the revolutionary idea that governance should be based on law, not on the whims of a ruler.</p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="pillar" onclick="togglePillar(this)">
+                        <div class="pillar-header">
+                            <h3 class="pillar-title">The Seed of Consent</h3>
+                            <div class="interactive-element">
+                                <div class="tax-scroll">
+                                    <p>Shall we levy a new tax?</p>
+                                    <div class="tax-options">
+                                        <button class="tax-btn" onclick="showTooltip(this)">Yes</button>
+                                        <button class="tax-btn" onclick="showTooltip(this)">No</button>
+                                    </div>
+                                    <div class="tooltip">You must first consult the council</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pillar-content">
+                            <p class="clause">Clauses regarding taxes and the need to consult with the kingdom.</p>
+                            <p>While limited to barons, this planted the seed for 'no taxation without representation,' a foundational concept for modern democracies and parliaments.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section -->
+            <section class="timeline-section" id="timeline">
+                <h2 class="section-title">The Ripple Through Time</h2>
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1215</div>
+                            <p>Magna Carta Sealed at Runnymede</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1628</div>
+                            <p>Petition of Right (England) - Directly cites Magna Carta</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1776</div>
+                            <p>U.S. Declaration of Independence - "Life, Liberty, pursuit of Happiness" echoes its spirit</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1789</div>
+                            <p>U.S. Bill of Rights - Embodies due process</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 5 -->
+                    <div class="timeline-item" onclick="toggleTimelineItem(this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-year">1948</div>
+                            <p>Universal Declaration of Human Rights - The spiritual successor, applying these rights to all people globally</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-quote">
+                    "From a deal between king and nobles, to the birthright of every human on earth."
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section" id="seal">
+                <h2 class="section-title">Add Your Seal</h2>
+                <p>The journey of human rights is ongoing. Add your digital wax seal to pledge your support for the principles of justice and liberty.</p>
+                
+                <div class="seal-container">
+                    <div class="historical-seal">
+                        <div class="seal-initials">ER</div>
+                        <div class="seal-quote">"Where, after all, do universal human rights begin? In small places, close to home." - Eleanor Roosevelt</div>
+                    </div>
+                    <div class="historical-seal">
+                        <div class="seal-initials">NM</div>
+                        <div class="seal-quote">"For to be free is not merely to cast off one's chains, but to live in a way that respects and enhances the freedom of others." - Nelson Mandela</div>
+                    </div>
+                </div>
+                
+                <div class="user-seal-container">
+                    <div class="user-seal" onclick="addUserSeal(this)">
+                        <div class="seal-text">Add Your Seal</div>
+                    </div>
+                    <div class="seal-instruction">Tap to add your seal</div>
+                </div>
+            </section>
+
+            <footer>
+                <p>Magna Carta Chronicles - An Interactive Exploration of the First Human Right Document</p>
+                <p class="footer-note">Optimized for all devices</p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
